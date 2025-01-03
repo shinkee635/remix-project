@@ -6,8 +6,10 @@ import axios from 'axios'
 import express from 'express'
 import { cacheDir } from '../utils/config'
 
-export const baseURLBin = 'https://binaries.soliditylang.org/bin'
-export const baseURLWasm = 'https://binaries.soliditylang.org/wasm'
+// export const baseURLBin = 'https://binaries.soliditylang.org/bin'
+// export const baseURLWasm = 'https://binaries.soliditylang.org/wasm'
+export const baseURLBin = 'http://127.0.0.1:8080/assets'
+export const baseURLWasm = 'http://127.0.0.1:8080/assets'
 
 const appExpress = express()
 
