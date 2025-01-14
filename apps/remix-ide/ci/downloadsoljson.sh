@@ -15,37 +15,37 @@ defaultVersion=$(grep '"defaultVersion"' package.json | awk -F '"' '{print $4}')
 echo "Specified version from package.json: $defaultVersion"
 
 # Fetch the list.json from the Solidity binaries
-listJson=$(curl -s --connect-timeout 5 --max-time 5 https://binaries.soliditylang.org/wasm/list.json)
+# listJson=$(curl -s --connect-timeout 5 --max-time 5 https://binaries.soliditylang.org/wasm/list.json)
 
 # Check if the download was successful
-if [ -z "$listJson" ]; then
-    echo "Failed to fetch version list. No internet connection or the connection is too slow."
-    exit 0  # Silently exit
-fi
+#if [ -z "$listJson" ]; then
+#    echo "Failed to fetch version list. No internet connection or the connection is too slow."
+#    exit 0  # Silently exit
+#fi
 
 # Overwrite the local list.json with the fetched content
-echo "$listJson" > ./apps/remix-ide/src/assets/list.json
+# echo "$listJson" > ./apps/remix-ide/src/assets/list.json
 
 # Check if the specified version exists in the list
-check=$(echo "$listJson" | grep "\"$defaultVersion\"")
+# check=$(echo "$listJson" | grep "\"$defaultVersion\"")
 
-if [ -z "$check" ]; then
-    echo "The specified version $defaultVersion could not be found in the list"
-    exit 1
-fi
+#if [ -z "$check" ]; then
+#    echo "The specified version $defaultVersion could not be found in the list"
+#    exit 1
+#fi
 echo "Path for the specified version: $defaultVersion"
-fullPath="https://binaries.soliditylang.org/bin/$defaultVersion"
+# fullPath="https://binaries.soliditylang.org/bin/$defaultVersion"
 echo "Download fullPath: $fullPath"
 # Ensure the target directory exists
-if [ ! -d "./apps/remix-ide/src/assets/js/soljson" ]; then
-    mkdir -p ./apps/remix-ide/src/assets/js/soljson
-fi
+# if [ ! -d "./apps/remix-ide/src/assets/js/soljson" ]; then
+#    mkdir -p ./apps/remix-ide/src/assets/js/soljson
+# fi
 
 # Download the soljson.js file to ./apps/remix-ide/src/assets/js/soljson.js
 echo "Downloading soljson.js from $fullPath to ./apps/remix-ide/src/assets/js/soljson.js"
-curl -s "$fullPath" > ./apps/remix-ide/src/assets/js/soljson.js
+# curl -s "$fullPath" > ./apps/remix-ide/src/assets/js/soljson.js
 
 # Copy the downloaded soljson.js to the specific version directory
-cp ./apps/remix-ide/src/assets/js/soljson.js "./apps/remix-ide/src/assets/js/soljson/$defaultVersion.js"
+cp ./soljson.js "./apps/remix-ide/src/assets/$defaultVersion"
 
 echo "Download and setup of soljson.js complete"
