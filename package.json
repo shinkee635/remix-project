@@ -229,7 +229,7 @@
     "tree-kill": "^1.2.2",
     "ts-loader": "^9.2.6",
     "tslib": "^2.3.0",
-    "web3": "file:packages/web3",
+    "web3": "file:web3.js/packages/web3",
     "winston": "^3.3.3",
     "ws": "^8.17.1",
     "xterm": "^5.2.1",

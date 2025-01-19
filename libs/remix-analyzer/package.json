@@ -31,7 +31,7 @@
     "ethers": "^5.4.2",
     "ethjs-util": "^0.1.6",
     "string-similarity": "^4.0.4",
-    "web3": "file:packages/web3"
+    "web3": "file:web3.js/packagesweb3"
   },
   "publishConfig": {
     "access": "public"

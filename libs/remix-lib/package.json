@@ -27,8 +27,8 @@
     "rlp": "^3.0.0",
     "solc": "0.8.26",
     "string-similarity": "^4.0.4",
-    "web3": "file:packages/web3",
-    "web3-validator": "file:packages/web3-validator"
+    "web3": "file:web3.js/packages/web3",
+    "web3-validator": "file:web3.js/packages/web3-validator"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

@@ -41,7 +41,7 @@
     "merge": "^2.1.1",
     "string-similarity": "^4.0.4",
     "time-stamp": "^2.2.0",
-    "web3": "file:packages/web3"
+    "web3": "file:web3.js/packagesweb3"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

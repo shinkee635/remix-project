@@ -195,49 +195,49 @@
               "libs/remix-git/"
             ],
             "@ethereumjs/util": [
-              "packages/util"
+              "ethereumjs-monorepo/packages/util"
             ],
             "@ethereumjs/common": [
-              "packages/common"
+              "ethereumjs-monorepo/packages/common"
             ],
             "@ethereumjs/block": [
-              "packages/block"
+              "ethereumjs-monorepo/packages/block"
             ],
             "@ethereumjs/blockchain": [
-              "packages/blockchain"
+              "ethereumjs-monorepo/packages/blockchain"
             ],
             "@ethereumjs/ethash": [
-              "packages/ethash"
+              "ethereumjs-monorepo/packages/ethash"
             ],
             "@ethereumjs/evm": [
-              "packages/evm"
+              "ethereumjs-monorepo/packages/evm"
             ],
             "@ethereumjs/rlp": [
-              "packages/rlp"
+              "ethereumjs-monorepo/packages/rlp"
             ],
             "@ethereumjs/statemanager": [
-              "packages/statemanager"
+              "ethereumjs-monorepo/packages/statemanager"
             ],
             "@ethereumjs/trie": [
-              "packages/trie"
+              "ethereumjs-monorepo/packages/trie"
             ],
             "@ethereumjs/tx": [
-              "packages/tx"
+              "ethereumjs-monorepo/packages/tx"
             ],
             "@ethereumjs/vm": [
-              "packages/vm"
+              "ethereumjs-monorepo/packages/vm"
             ],
             "web3": [
-              "packages/web3"
+              "web3.js/packages/web3"
             ],
             "web3-eth": [
-              "packages/web3-eth"
+              "web3.js/packages/web3-eth"
             ],
             "web3-core": [
-              "packages/web3-core"
+              "web3.js/packages/web3-core"
             ],
             "web3-validator": [
-              "packages/web3-validator"
+              "web3.js/packages/web3-validator"
             ]
         }
     }
