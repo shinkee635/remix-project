@@ -259,6 +259,19 @@ export const SolidityCompiler = (props: SolidityCompilerProps) => {
     }
   },[])
 
+  useEffect(() => {
+    if (compileErrors && 
+        compileErrors[currentFile]?.error?.mode === 'panic') {
+      modal(
+        'Error',
+        panicMessage(compileErrors[currentFile].error.formattedMessage),
+        'Close',
+        null,
+        false
+      )
+    }
+  }, [compileErrors, currentFile])
+
   return (
     <>
       <div id="compileTabView">
@@ -296,7 +309,7 @@ export const SolidityCompiler = (props: SolidityCompilerProps) => {
         )}
         {compileErrors && compileErrors[currentFile] && (
           <div className="remixui_errorBlobs p-4" data-id="compiledErrors">
-            <>
+            <div>
               <span data-id={`compilationFinishedWith_${currentVersion}`}></span>
               {compileErrors[currentFile].error && (
                 <Renderer
@@ -309,21 +322,23 @@ export const SolidityCompiler = (props: SolidityCompilerProps) => {
                   }}
                 />
               )}
-              {compileErrors[currentFile].error &&
-                compileErrors[currentFile].error.mode === 'panic' &&
-                modal('Error', panicMessage(compileErrors[currentFile].error.formattedMessage), 'Close', null, false)}
               {compileErrors[currentFile].errors &&
-                compileErrors[currentFile].errors.length &&
+                compileErrors[currentFile].errors.length > 0 &&
                 compileErrors[currentFile].errors.map((err, index) => {
-                  if (hideWarnings) {
-                    if (err.severity !== 'warning') {
-                      return <Renderer context='solidity' key={index} message={err.formattedMessage} plugin={api} opt={{ type: err.severity, errorType: err.type }} />
-                    }
-                  } else {
-                    return <Renderer context='solidity' key={index} message={err.formattedMessage} plugin={api} opt={{ type: err.severity, errorType: err.type }} />
+                  if (hideWarnings && err.severity === 'warning') {
+                    return null
                   }
+                  return (
+                    <Renderer
+                      key={index}
+                      context='solidity'
+                      message={err.formattedMessage}
+                      plugin={api}
+                      opt={{ type: err.severity, errorType: err.type }}
+                    />
+                  )
                 })}
-            </>
+            </div>
           </div>
         )}
       </div>

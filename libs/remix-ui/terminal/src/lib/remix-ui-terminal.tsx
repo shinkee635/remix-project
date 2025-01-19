@@ -533,20 +533,21 @@ export const RemixUiTerminal = (props: RemixUiTerminalProps) => {
     >
       <div>
         {autoCompletState.data._options.map((item, index) => {
-          return (
-            <div
-              key={index}
-              data-id="autoCompletePopUpAutoCompleteItem"
-              className={`remix_ui_terminal_autoCompleteItem item ${autoCompletState.data._options[autoCompletState.activeSuggestion] === item ? 'border border-primary ' : ''}`}
-              onKeyDown={handleSelect}
-              onClick={() => handleClickSelect(item)}
-            >
-              <div>{getKeyOf(item)}</div>
-              <div>
-                <>{getValueOf(item)}</>
-              </div>
-            </div>
-          )
+          const value = getValueOf(item)
+          if (value === null || value === undefined) {
+            return null
+          }
+          if (React.isValidElement(value)) {
+            return value
+          }
+          if (typeof value === 'object') {
+            try {
+              return JSON.stringify(value)
+            } catch (e) {
+              return '[ Object ]'
+            }
+          }
+          return String(value)
         })}
       </div>
     </div>

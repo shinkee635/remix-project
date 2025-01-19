@@ -19,6 +19,7 @@ module.exports = composePlugins(withNx(), (config) => {
     os: false, //require.resolve("os-browserify/browser"),
     timers: false, // require.resolve("timers-browserify"),
     zlib: require.resolve('browserify-zlib'),
+    querystring: require.resolve("querystring-es3"),
     fs: false,
     module: false,
     tls: false,

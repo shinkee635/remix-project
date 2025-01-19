@@ -62,6 +62,7 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
     timers: false, // require.resolve("timers-browserify"),
     zlib: require.resolve('browserify-zlib'),
     'assert/strict': require.resolve('assert/'),
+    querystring: require.resolve("querystring-es3"),
     fs: false,
     module: false,
     tls: false,

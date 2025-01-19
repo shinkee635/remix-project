@@ -385,7 +385,6 @@ export const clearPopUp = async () => {
 export const createNewFile = async (path: string, rootDir: string) => {
   const fileManager = plugin.fileManager
   const newName = await createNonClashingNameAsync(path, fileManager)
-  console.log("Testing find writejson")
   const createFile = await fileManager.writeFile(newName, '')
 
   if (!createFile) {

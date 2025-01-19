@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { Fragment } from 'react'
 import { OverlayTrigger, Popover, Tooltip } from 'react-bootstrap'
 import { CustomTooltipType } from '../../types/customtooltip'
+import { OverlayTriggerRenderProps } from 'react-bootstrap/esm/OverlayTrigger'
 
 export function CustomTooltip({ children, placement, tooltipId, tooltipClasses, tooltipText, tooltipTextClasses, delay, hide, show }: CustomTooltipType) {
   if (typeof tooltipText !== 'string') {
@@ -10,6 +11,16 @@ export function CustomTooltip({ children, placement, tooltipId, tooltipClasses, 
       className: ' bg-secondary text-wrap p-1 px-2 '
     })
     tooltipText = newTooltipText
+  }
+
+  const renderChildren = () => {
+    if (typeof children === 'function') {
+      return children({
+        ref: () => {},
+        style: {}
+      } as OverlayTriggerRenderProps)
+    }
+    return children
   }
 
   return (
@@ -34,7 +45,7 @@ export function CustomTooltip({ children, placement, tooltipId, tooltipClasses, 
       </Fragment>
     ) : (
       <Fragment>
-        <>{children}</>
+        <>{renderChildren()}</>
       </Fragment>
     ))
   )
