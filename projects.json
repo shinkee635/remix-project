@@ -5059,7 +5059,6 @@
                 "npm:react",
                 "npm:util",
                 "npm:@remixproject/engine",
-                "npm:web3-core"
                 "packages/web3.js/packages/web3-core"
               ]
             },
@@ -5500,7 +5499,6 @@
               "hash": "ea7a1c0c6ef800d80946517ade15e9e2df62529b",
               "deps": [
                 "npm:@remixproject/engine",
-                "npm:web3"
                 "packages/web3.js/packages/web3"
               ]
             },
@@ -5989,7 +5987,6 @@
               "hash": "c698fd9c40ca72b8023b98f3d79ed67cf7b2c8b8",
               "deps": [
                 "npm:react",
-                "npm:web3",
                 "packages/web3.js/packages/web3",
                 "npm:@remixproject/engine",
                 "packages/ethereumjs-monorepo/packages/util",
@@ -6232,7 +6229,6 @@
               "file": "libs/remix-lib/package.json",
               "hash": "afec35ad63cac130f215898247723a64a6a69293",
               "deps": [
-                "npm:@ethereumjs/util",
                 "packages/ethereumjs-monorepo/packages/util",
                 "npm:async",
                 "npm:ethers",
