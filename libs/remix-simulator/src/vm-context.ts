@@ -348,7 +348,7 @@ export class VMContext {
       header: {
         timestamp: (new Date().getTime() / 1000 | 0),
         number: BIGINT_0,
-        coinbase: '0x0e9281e9c6a0808672eaba6bd1220e144c9bb07a',
+        coinbase: '0x0e9281e9c6a0808672eaba6bd1220e144c9bb07a123456789012345678901234',
         difficulty,
         gasLimit: 8000000
       }

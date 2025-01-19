@@ -47,7 +47,7 @@ module.exports = function (st, privateKey, contractBytecode, compilationResult, 
                 st.equals(locals['boolFalse'].value, false)
                 st.equals(locals['boolTrue'].value, true)
                 st.equals(locals['testEnum'].value, 'three')
-                st.equals(locals['sender'].value, '0x5B38DA6A701C568545DCFCB03FCB875F56BEDDC4')
+                st.equals(locals['sender'].value, '0x5B38DA6A701C568545DCFCB03FCB875F56BEDDC4123456789012345678901234')
                 st.equals(locals['_bytes1'].value, '0x99')
                 st.equals(locals['__bytes1'].value, '0x99')
                 st.equals(locals['__bytes2'].value, '0x99AB')

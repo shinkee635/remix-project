@@ -17,10 +17,10 @@ module.exports = {
     browser.addFile('scenario.json', { content: records })
       .waitForElementVisible({
         locateStrategy: 'xpath',
-        selector: "//*[contains(@class, 'view-lines') and contains(.,'0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c')]"
+        selector: "//*[contains(@class, 'view-lines') and contains(.,'0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234')]"
       })
       .clickLaunchIcon('udapp')
-      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c') // this account will be used for this test suite
+      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234') // this account will be used for this test suite
       .click('[data-id="udappRecorderTitleExpander"]')
       .click('[data-id="runtransaction"]')
       .clickInstance(0)
@@ -186,7 +186,7 @@ contract t2est {
 
 const records = `{
   "accounts": {
-    "account{10}": "0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c"
+    "account{10}": "0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234"
   },
   "linkReferences": {
     "testLib": "created{1512830014773}"
@@ -344,7 +344,7 @@ const records = `{
 
 const scenario = {
   accounts: {
-    'account{10}': '0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c'
+    'account{10}': '0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234'
   },
   linkReferences: {},
   transactions: [
@@ -414,7 +414,7 @@ const scenario = {
 
 const liveModeScenario = {
   "accounts": {
-    "account{0}": "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
+    "account{0}": "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4123456789012345678901234"
   },
   "linkReferences": {},
   "transactions": [

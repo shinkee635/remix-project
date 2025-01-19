@@ -9,7 +9,7 @@ export class Blocks {
   constructor (vmContext, _options) {
     this.vmContext = vmContext
     const options = _options || {}
-    this.coinbase = options.coinbase || '0x0000000000000000000000000000000000000000'
+    this.coinbase = options.coinbase || '0x0000000000000000000000000000000000000000000000000000000000000000'
   }
 
   methods (): Record<string, unknown> {

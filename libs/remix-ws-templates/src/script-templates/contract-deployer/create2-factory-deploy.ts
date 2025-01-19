@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 
 // https://etherscan.io/address/0x13b0D85CcB8bf860b6b79AF3029fCA081AE9beF2#code
-export const CREATE2_DEPLOYER_ADDRESS = '0x13b0D85CcB8bf860b6b79AF3029fCA081AE9beF2'
+export const CREATE2_DEPLOYER_ADDRESS = '0x13b0D85CcB8bf860b6b79AF3029fCA081AE9beF2123456789012345678901234'
 
 /**
  * Deploy the given contract using a factory

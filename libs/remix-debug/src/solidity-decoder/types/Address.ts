@@ -4,12 +4,12 @@ import { ValueType } from './ValueType'
 
 export class Address extends ValueType {
   constructor () {
-    super(1, 20, 'address')
+    super(1, 32, 'address')
   }
 
   decodeValue (value) {
     if (!value) {
-      return '0x0000000000000000000000000000000000000000'
+      return '0x0000000000000000000000000000000000000000000000000000000000000000'
     }
     return '0x' + extractHexByteSlice(value, this.storageBytes, 0).toUpperCase()
   }

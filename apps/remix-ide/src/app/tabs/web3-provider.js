@@ -76,6 +76,7 @@ export class Web3ProviderModule extends Plugin {
     
                   if (isVM && this.blockchain.config.get('settings/save-evm-state')) {
                     await this.blockchain.executionContext.getStateDetails().then((state) => {
+                      console.log("Testing find writejson")
                       this.call('fileManager', 'writeFile', `.states/${this.blockchain.executionContext.getProvider()}/state.json`, state)
                     })
                   }

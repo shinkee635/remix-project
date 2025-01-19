@@ -7,7 +7,7 @@ import * as assert from 'assert'
 describe('blocks', () => {
   before(async () => {
     const provider = new Provider({
-      coinbase: '0x0000000000000000000000000000000000000001'
+      coinbase: '0x0000000000000000000000000000000000000000000000000000000000000001'
     })
     await provider.init()
     web3.setProvider(provider as any)

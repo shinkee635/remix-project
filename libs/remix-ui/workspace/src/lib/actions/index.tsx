@@ -94,7 +94,7 @@ export const initWorkspace = (filePanelPlugin) => async (reducerDispatch: React.
         }
       })
     } else if (params.address && params.blockscout) {
-      if (params.address.startsWith('0x') && params.address.length === 42 && params.blockscout.length > 0) {
+      if (params.address.startsWith('0x') && params.address.length === 66 && params.blockscout.length > 0) {
         const contractAddress = params.address
         const blockscoutUrl = params.blockscout
         plugin.call('notification', 'toast', `Looking for contract(s) verified on ${blockscoutUrl} for contract address ${contractAddress} .....`)
@@ -128,7 +128,7 @@ export const initWorkspace = (filePanelPlugin) => async (reducerDispatch: React.
         }
       } else await basicWorkspaceInit(workspaces, workspaceProvider)
     } else if (params.address) {
-      if (params.address.startsWith('0x') && params.address.length === 42) {
+      if (params.address.startsWith('0x') && params.address.length === 66) {
         const contractAddress = params.address
         plugin.call('notification', 'toast', `Looking for contract(s) verified on different networks of Etherscan for contract address ${contractAddress} .....`)
         let data
@@ -385,6 +385,7 @@ export const clearPopUp = async () => {
 export const createNewFile = async (path: string, rootDir: string) => {
   const fileManager = plugin.fileManager
   const newName = await createNonClashingNameAsync(path, fileManager)
+  console.log("Testing find writejson")
   const createFile = await fileManager.writeFile(newName, '')
 
   if (!createFile) {

@@ -69,13 +69,13 @@ export function normalizeHex (hex) {
 
 export function normalizeHexAddress (hex) {
   if (hex.indexOf('0x') === 0) hex = hex.replace('0x', '')
-  if (hex.length >= 40) {
-    const reg = /(.{40})$/.exec(hex)
+  if (hex.length >= 64) {
+    const reg = /(.{64})$/.exec(hex)
     if (reg) {
       return '0x' + reg[0]
     }
   } else {
-    return '0x' + (new Array(40 - hex.length + 1).join('0')) + hex
+    return '0x' + (new Array(64 - hex.length + 1).join('0')) + hex
   }
 }
 

@@ -14,7 +14,7 @@ module.exports = {
   'Execute Simple Contract and Test Terminal #group1': function (browser: NightwatchBrowser) {
     browser.testContracts('Untitled.sol', sources[0]['Untitled.sol'], ['TestContract'])
       .clickLaunchIcon('udapp')
-      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c') // this account will be used for this test suite
+      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234') // this account will be used for this test suite
       .click('.udapp_contractActionsContainerSingle > div')
       .clickInstance(0)
       .clickFunction('f - transact (not payable)')
@@ -50,7 +50,7 @@ module.exports = {
             0: 'bool: _b true',
             1: 'uint256: _u 345',
             2: 'int256: _i -345',
-            3: 'address: _a 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c'
+            3: 'address: _a 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234'
           }
         })
       .clickFunction('returnValues2 - transact (not payable)')
@@ -106,7 +106,7 @@ module.exports = {
         },
         logs: [
           {
-            from: '0xd9145CCE52D386f254917e481eB44e9943F39138',
+            from: '0xd9145CCE52D386f254917e481eB44e9943F39138123456789012345678901234',
             topic: '0xd30981760edbf605bda8689e945f622877f230c9a77cbfbd448aa4b7d8ac6e7f',
             event: 'event1',
             args: {
@@ -128,7 +128,7 @@ module.exports = {
   'Should Compile and Deploy a contract which has an event declaring a function as parameter #group2': function (browser: NightwatchBrowser) {
     browser.testContracts('eventFunctionInput.sol', sources[3]['eventFunctionInput.sol'], ['C'])
       .clickLaunchIcon('udapp')
-      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c') // this account will be used for this test suite
+      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234') // this account will be used for this test suite
       .click('.udapp_contractActionsContainerSingle > div')
       .clickInstance(0)
       .click('*[data-id="deployAndRunClearInstances"]')
@@ -153,15 +153,15 @@ module.exports = {
   'Should filter displayed transactions #group2': function (browser: NightwatchBrowser) {
     browser
       // it should contain: 0xd9145CCE52D386f254917e481eB44e9943F39138
-      .checkTerminalFilter('0xd9145CCE52D386f254917e481eB44e9943F39138', '0xd9145CCE52D386f254917e481eB44e9943F39138', false)
+      .checkTerminalFilter('0xd9145CCE52D386f254917e481eB44e9943F39138123456789012345678901234', '0xd9145CCE52D386f254917e481eB44e9943F39138123456789012345678901234', false)
       // it should not contain: 0xd9145CCE52D386f254917e481eB44e9943F39140 (it ends with 40)
-      .checkTerminalFilter('0xd9145CCE52D386f254917e481eB44e9943F39140', '0xd9145CCE52D386f254917e481eB44e9943F39138', true)
+      .checkTerminalFilter('0xd9145CCE52D386f254917e481eB44e9943F39140123456789012345678901234', '0xd9145CCE52D386f254917e481eB44e9943F39138123456789012345678901234', true)
   },
 
   'Should Compile and Deploy a contract which define a custom error, the error should be logged in the terminal #group3': function (browser: NightwatchBrowser) {
     browser.testContracts('customError.sol', sources[4]['customError.sol'], ['C'])
       .clickLaunchIcon('udapp')
-      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c') // this account will be used for this test suite
+      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234') // this account will be used for this test suite
       .click('.udapp_contractActionsContainerSingle > div')
       .clickInstance(0)
       .clickFunction('g - transact (not payable)')
@@ -184,7 +184,7 @@ module.exports = {
       .setValue('#evmVersionSelector', 'london') // Set EVM version as fork version
       .clearTransactions()
       .switchEnvironment('vm-london') // switch to London fork
-      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c') // this account will be used for this test suite
+      .selectAccount('0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c123456789012345678901234') // this account will be used for this test suite
       .click('.udapp_contractActionsContainerSingle > div')
       .clickInstance(0)
       .clickFunction('g - transact (not payable)')
@@ -247,7 +247,7 @@ module.exports = {
       .switchEnvironment('vm-mainnet-fork')
       .waitForElementPresent({
         locateStrategy: 'css selector',
-        selector: 'select[data-id="runTabSelectAccount"] option[value="0xdD870fA1b7C4700F2BD7f44238821C26f7392148"]',
+        selector: 'select[data-id="runTabSelectAccount"] option[value="0xdD870fA1b7C4700F2BD7f44238821C26f7392148123456789012345678901234"]',
         timeout: 250000
       }) // wait for the udapp to load the list of accounts
       .selectContract('MyResolver')
@@ -258,7 +258,7 @@ module.exports = {
       })
       .clickFunction('resolve - call')
       .perform((done) => {
-        browser.verifyCallReturnValue(addressRef, ['0:address: 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'])
+        browser.verifyCallReturnValue(addressRef, ['0:address: 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045123456789012345678901234'])
           .perform(() => done())
       })
   },

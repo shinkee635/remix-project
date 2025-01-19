@@ -250,7 +250,7 @@ function testDebugging (debugManager) {
       const state = await debugManager.extractStateAt(442)
       const decodedState = await debugManager.decodeStateAt(442, state)
       console.log(decodedState)
-      t.equal(decodedState['chairperson'].value, '0x5B38DA6A701C568545DCFCB03FCB875F56BEDDC4')
+      t.equal(decodedState['chairperson'].value, '0x5B38DA6A701C568545DCFCB03FCB875F56BEDDC4123456789012345678901234')
       t.equal(decodedState['chairperson'].type, 'address')
       t.equal(decodedState['proposals'].value[0].value.voteCount.value, '0')
       t.equal(decodedState['proposals'].value[0].value.voteCount.type, 'uint256')

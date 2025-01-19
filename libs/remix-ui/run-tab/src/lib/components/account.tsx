@@ -260,7 +260,7 @@ const EIP712_Example = {
   domain: {
     chainId: 1,
     name: "Example App",
-    verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
+    verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccCcCCccccCCCCcCCCCCCcCcCcc",
     version: "1",
   },
   message: {
