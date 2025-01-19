@@ -195,49 +195,49 @@
               "libs/remix-git/"
             ],
             "@ethereumjs/util": [
-              "packages/ethereumjs-monorepo/packages/util"
+              "packages/util"
             ],
             "@ethereumjs/common": [
-              "packages/ethereumjs-monorepo/packages/common"
+              "packages/common"
             ],
             "@ethereumjs/block": [
-              "packages/ethereumjs-monorepo/packages/block"
+              "packages/block"
             ],
             "@ethereumjs/blockchain": [
-              "packages/ethereumjs-monorepo/packages/blockchain"
+              "packages/blockchain"
             ],
             "@ethereumjs/ethash": [
-              "packages/ethereumjs-monorepo/packages/ethash"
+              "packages/ethash"
             ],
             "@ethereumjs/evm": [
-              "packages/ethereumjs-monorepo/packages/evm"
+              "packages/evm"
             ],
             "@ethereumjs/rlp": [
-              "packages/ethereumjs-monorepo/packages/rlp"
+              "packages/rlp"
             ],
             "@ethereumjs/statemanager": [
-              "packages/ethereumjs-monorepo/packages/statemanager"
+              "packages/statemanager"
             ],
             "@ethereumjs/trie": [
-              "packages/ethereumjs-monorepo/packages/trie"
+              "packages/trie"
             ],
             "@ethereumjs/tx": [
-              "packages/ethereumjs-monorepo/packages/tx"
+              "packages/tx"
             ],
             "@ethereumjs/vm": [
-              "packages/ethereumjs-monorepo/packages/vm"
+              "packages/vm"
             ],
             "web3": [
-              "packages/web3.js/packages/web3"
+              "packages/web3"
             ],
             "web3-eth": [
-              "packages/web3.js/packages/web3-eth"
+              "packages/web3-eth"
             ],
             "web3-core": [
-              "packages/web3.js/packages/web3-core"
+              "packages/web3-core"
             ],
             "web3-validator": [
-              "packages/web3.js/packages/web3-validator"
+              "packages/web3-validator"
             ]
         }
     }

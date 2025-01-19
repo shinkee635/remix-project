@@ -28,7 +28,7 @@
     "semver": "^6.3.0",
     "solc": "0.8.26",
     "string-similarity": "^4.0.4",
-    "web3": "file:packages/web3.js/packages/web3",
+    "web3": "file:packages/web3",
     "webworkify-webpack": "^2.1.5"
   },
   "devDependencies": {

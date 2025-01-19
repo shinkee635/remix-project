@@ -39,8 +39,8 @@
     "string-similarity": "^4.0.4",
     "time-stamp": "^2.0.0",
     "tslib": "^2.3.0",
-    "web3": "file:packages/web3.js/packages/web3",
-    "web3-utils": "file:packages/web3.js/packages/web3-utils"
+    "web3": "file:packages/web3",
+    "web3-utils": "file:packages/web3-utils"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

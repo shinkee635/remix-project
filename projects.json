@@ -394,7 +394,7 @@
                 "npm:@openzeppelin/contracts",
                 "npm:@openzeppelin/wizard",
                 "npm:ethers",
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -478,8 +478,8 @@
               "file": "libs/remix-ws-templates/src/templates/gnosisSafeMultisig/scripts/web3-lib.ts",
               "hash": "c57e501039a18ff6577256b7b5e601df92887ed9",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/web3.js/packages/web3-eth-contract"
+                "packages/web3",
+                "packages/web3-eth-contract"
               ]
             },
             {
@@ -512,8 +512,8 @@
               "file": "libs/remix-ws-templates/src/templates/ozerc1155/scripts/web3-lib.ts",
               "hash": "921774572a81b0878002614a3bc863c66659d5d7",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/web3.js/packages/web3-eth-contract"
+                "packages/web3",
+                "packages/web3-eth-contract"
               ]
             },
             {
@@ -550,8 +550,8 @@
               "file": "libs/remix-ws-templates/src/templates/ozerc20/scripts/web3-lib.ts",
               "hash": "c57e501039a18ff6577256b7b5e601df92887ed9",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/web3.js/packages/web3-eth-contract"
+                "packages/web3",
+                "packages/web3-eth-contract"
               ]
             },
             {
@@ -592,8 +592,8 @@
               "file": "libs/remix-ws-templates/src/templates/ozerc721/scripts/web3-lib.ts",
               "hash": "c57e501039a18ff6577256b7b5e601df92887ed9",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/web3.js/packages/web3-eth-contract"
+                "packages/web3",
+                "packages/web3-eth-contract"
               ]
             },
             {
@@ -643,8 +643,8 @@
               "file": "libs/remix-ws-templates/src/templates/remixDefault/scripts/web3-lib.ts",
               "hash": "c57e501039a18ff6577256b7b5e601df92887ed9",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/web3.js/packages/web3-eth-contract"
+                "packages/web3",
+                "packages/web3-eth-contract"
               ]
             },
             {
@@ -690,8 +690,8 @@
               "file": "libs/remix-ws-templates/src/templates/zeroxErc20/scripts/web3-lib.ts",
               "hash": "c57e501039a18ff6577256b7b5e601df92887ed9",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/web3.js/packages/web3-eth-contract"
+                "packages/web3",
+                "packages/web3-eth-contract"
               ]
             },
             {
@@ -971,7 +971,7 @@
               "hash": "d004888a58dd18463a3747bc40fdf5f9a52b4ccf",
               "deps": [
                 "npm:@remixproject/engine",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -1271,7 +1271,7 @@
                 "remix-simulator",
                 "npm:chai",
                 "npm:ethers",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "remix-solidity",
                 "npm:@types/chai",
                 "npm:typescript"
@@ -1312,7 +1312,7 @@
               "hash": "b6558f4eb0c1de836d5681f5f44a58738279fe60",
               "deps": [
                 "npm:ethers",
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -1411,10 +1411,10 @@
               "file": "libs/remix-astwalker/package.json",
               "hash": "636700b360818f8250561a0c6e08496b03b16950",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/block",
-                "packages/ethereumjs-monorepo/packages/tx",
-                "packages/ethereumjs-monorepo/packages/util",
-                "packages/ethereumjs-monorepo/packages/vm",
+                "packages/block",
+                "packages/tx",
+                "packages/util",
+                "packages/vm",
                 "remix-lib",
                 "npm:@types/tape",
                 "npm:async",
@@ -1425,7 +1425,7 @@
                 "npm:tape",
                 "npm:ts-node",
                 "npm:typescript",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:tap-spec"
               ]
             },
@@ -1588,11 +1588,11 @@
               "file": "libs/remix-simulator/package.json",
               "hash": "594f82c8f24f4fb02dc768f31bfbdfa8a1ca7ad2",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/block",
-                "packages/ethereumjs-monorepo/packages/common",
-                "packages/ethereumjs-monorepo/packages/tx",
-                "packages/ethereumjs-monorepo/packages/util",
-                "packages/ethereumjs-monorepo/packages/vm",
+                "packages/block",
+                "packages/common",
+                "packages/tx",
+                "packages/util",
+                "packages/vm",
                 "remix-lib",
                 "npm:ansi-gray",
                 "npm:async",
@@ -1607,7 +1607,7 @@
                 "npm:merge",
                 "npm:string-similarity",
                 "npm:time-stamp",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@babel/core",
                 "npm:@babel/plugin-transform-object-assign",
                 "npm:@babel/preset-env",
@@ -1633,17 +1633,17 @@
               "file": "libs/remix-simulator/src/methods/accounts.ts",
               "hash": "ffbfc89a3a26437a7de6e2618654761d5e2e71b3",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:bn.js",
-                "packages/web3.js/packages/web3-eth-accounts"
+                "packages/web3-eth-accounts"
               ]
             },
             {
               "file": "libs/remix-simulator/src/methods/blocks.ts",
               "hash": "60b47bab25b6ec3b6843564ba15422693e4f5896",
               "deps": [
-                "packages/web3.js/packages/web3-utils",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/web3-utils",
+                "packages/util"
               ]
             },
             {
@@ -1658,7 +1658,7 @@
               "file": "libs/remix-simulator/src/methods/misc.ts",
               "hash": "e6f8a3716a9db34e03e96285773dfa8521f90366",
               "deps": [
-                "packages/web3.js/packages/web3-utils"
+                "packages/web3-utils"
               ]
             },
             {
@@ -1669,12 +1669,12 @@
               "file": "libs/remix-simulator/src/methods/transactions.ts",
               "hash": "dc6d940e6504187295bef4d342695d64dacea0c0",
               "deps": [
-                "packages/web3.js/packages/web3-utils",
+                "packages/web3-utils",
                 "npm:bn.js",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:ethers",
-                "packages/ethereumjs-monorepo/packages/vm",
-                "packages/ethereumjs-monorepo/packages/evm"
+                "packages/vm",
+                "packages/evm"
               ]
             },
             {
@@ -1711,18 +1711,18 @@
               "file": "libs/remix-simulator/src/vm-context.ts",
               "hash": "62122a61c91539cfac79e478694078fa60490340",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/statemanager",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/statemanager",
+                "packages/util",
                 "npm:ethereum-cryptography",
                 "npm:rlp",
                 "npm:ethers",
-                "packages/ethereumjs-monorepo/packages/vm",
-                "packages/ethereumjs-monorepo/packages/common",
-                "packages/ethereumjs-monorepo/packages/trie",
-                "packages/ethereumjs-monorepo/packages/evm",
-                "packages/ethereumjs-monorepo/packages/blockchain",
-                "packages/ethereumjs-monorepo/packages/block",
-                "packages/ethereumjs-monorepo/packages/tx"
+                "packages/vm",
+                "packages/common",
+                "packages/trie",
+                "packages/evm",
+                "packages/blockchain",
+                "packages/block",
+                "packages/tx"
               ]
             },
             {
@@ -1730,20 +1730,20 @@
               "hash": "90d7ebfbf7221d0bf30f6c41aecfdcb51838a2d8",
               "deps": [
                 "npm:bn.js",
-                "packages/web3.js/packages/web3-utils",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/web3-utils",
+                "packages/util",
                 "npm:ethers",
-                "packages/ethereumjs-monorepo/packages/statemanager",
-                "packages/ethereumjs-monorepo/packages/evm",
-                "packages/ethereumjs-monorepo/packages/vm",
-                "packages/ethereumjs-monorepo/packages/tx"
+                "packages/statemanager",
+                "packages/evm",
+                "packages/vm",
+                "packages/tx"
               ]
             },
             {
               "file": "libs/remix-simulator/test/accounts.ts",
               "hash": "336d438380cdd912718da5bf0969aac5524270b9",
               "deps": [
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:assert"
               ]
             },
@@ -1751,7 +1751,7 @@
               "file": "libs/remix-simulator/test/blocks.ts",
               "hash": "72b454b8dd520062a5d16858d3df6e1320c65d58",
               "deps": [
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:assert"
               ]
             },
@@ -1759,7 +1759,7 @@
               "file": "libs/remix-simulator/test/events.ts",
               "hash": "98133679a426db1f96ae8ca88a8c3e9d380df589",
               "deps": [
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:assert"
               ]
             },
@@ -1767,7 +1767,7 @@
               "file": "libs/remix-simulator/test/misc.ts",
               "hash": "a339910996f85a5f3ff168b0fba14492e4f7f88c",
               "deps": [
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:assert"
               ]
             },
@@ -1775,7 +1775,7 @@
               "file": "libs/remix-simulator/test/transactions.ts",
               "hash": "30f9a96fd2d7fca3a4f3f9c2bf91040147358adb",
               "deps": [
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:assert"
               ]
             },
@@ -1865,17 +1865,17 @@
               "file": "libs/remix-analyzer/package.json",
               "hash": "781a3a3bdca08efa7fff04e369e4ad1c3c736abd",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/block",
-                "packages/ethereumjs-monorepo/packages/tx",
-                "packages/ethereumjs-monorepo/packages/util",
-                "packages/ethereumjs-monorepo/packages/vm",
+                "packages/block",
+                "packages/tx",
+                "packages/util",
+                "packages/vm",
                 "remix-astwalker",
                 "remix-lib",
                 "npm:async",
                 "npm:ethers",
                 "npm:ethjs-util",
                 "npm:string-similarity",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@types/node",
                 "npm:babel-eslint",
                 "npm:npm-install-version",
@@ -2486,10 +2486,10 @@
               "file": "libs/remix-solidity/package.json",
               "hash": "5a9ecbc02026c6c8472a3649087766eb000ef91e",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/block",
-                "packages/ethereumjs-monorepo/packages/tx",
-                "packages/ethereumjs-monorepo/packages/util",
-                "packages/ethereumjs-monorepo/packages/vm",
+                "packages/block",
+                "packages/tx",
+                "packages/util",
+                "packages/vm",
                 "remix-lib",
                 "npm:async",
                 "npm:eslint-scope",
@@ -2499,7 +2499,7 @@
                 "npm:semver",
                 "npm:solc",
                 "npm:string-similarity",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@babel/core",
                 "npm:@babel/plugin-transform-object-assign",
                 "npm:@babel/preset-env",
@@ -2852,11 +2852,11 @@
               "file": "libs/remix-debug/package.json",
               "hash": "32799caf494544ca97f967e4958d359d881dbe81",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/block",
-                "packages/ethereumjs-monorepo/packages/common",
-                "packages/ethereumjs-monorepo/packages/tx",
-                "packages/ethereumjs-monorepo/packages/util",
-                "packages/ethereumjs-monorepo/packages/vm",
+                "packages/block",
+                "packages/common",
+                "packages/tx",
+                "packages/util",
+                "packages/vm",
                 "remix-astwalker",
                 "remix-lib",
                 "remix-simulator",
@@ -2872,7 +2872,7 @@
                 "npm:merge",
                 "npm:string-similarity",
                 "npm:time-stamp",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@babel/core",
                 "npm:@babel/plugin-transform-object-assign",
                 "npm:@babel/preset-env",
@@ -2895,7 +2895,7 @@
               "file": "libs/remix-debug/src/cmdline/index.ts",
               "hash": "b019e7ebd0c731cbf7a41f9699b0de8c54ab1b78",
               "deps": [
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:events"
               ]
             },
@@ -2915,15 +2915,15 @@
               "file": "libs/remix-debug/src/code/codeUtils.ts",
               "hash": "f9784bb135f1fb9097d9acf1db2b8657384a1db1",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/common",
-                "packages/ethereumjs-monorepo/packages/evm"
+                "packages/common",
+                "packages/evm"
               ]
             },
             {
               "file": "libs/remix-debug/src/code/disassembler.ts",
               "hash": "b828fe7e5d6e54ad28f72ca092a7880b8a808fee",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -2966,7 +2966,7 @@
               "file": "libs/remix-debug/src/init.ts",
               "hash": "fab25c5039121ae303900e62810dd06f33261c53",
               "deps": [
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -3036,7 +3036,7 @@
               "file": "libs/remix-debug/src/solidity-decoder/types/Mapping.ts",
               "hash": "870c0b01a82e9f37dad4307bcf9ec459e7897fc2",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:bn.js"
               ]
             },
@@ -3063,7 +3063,7 @@
               "file": "libs/remix-debug/src/solidity-decoder/types/util.ts",
               "hash": "bd6a7f4bd1bdccc1f51d1179a336b9ae2063263d",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:bn.js"
               ]
             },
@@ -3230,7 +3230,7 @@
               "hash": "52b457e8ce1677891ecb18063b0322f091702be7",
               "deps": [
                 "npm:solc",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -3323,8 +3323,8 @@
               "file": "libs/remix-debug/test/vmCall.ts",
               "hash": "56d15729e970f28166187e78b822718dedfe4948",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util",
-                "packages/web3.js/packages/web3"
+                "packages/util",
+                "packages/web3"
               ]
             },
             {
@@ -3444,11 +3444,11 @@
               "hash": "a9462d0075967537747e533bd48da292ebb6f048",
               "deps": [
                 "npm:@erebos/bzz-node",
-                "packages/ethereumjs-monorepo/packages/block",
-                "packages/ethereumjs-monorepo/packages/common",
-                "packages/ethereumjs-monorepo/packages/tx",
-                "packages/ethereumjs-monorepo/packages/util",
-                "packages/ethereumjs-monorepo/packages/vm",
+                "packages/block",
+                "packages/common",
+                "packages/tx",
+                "packages/util",
+                "packages/vm",
                 "remix-lib",
                 "remix-simulator",
                 "remix-solidity",
@@ -3470,7 +3470,7 @@
                 "npm:string-similarity",
                 "npm:time-stamp",
                 "npm:tslib",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:winston",
                 "npm:@babel/preset-env",
                 "npm:@types/mocha",
@@ -3513,7 +3513,7 @@
               "hash": "d3164eb285af643d04cfbfc699ae6dd0844d8179",
               "deps": [
                 "npm:async",
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -3539,7 +3539,7 @@
               "hash": "116da1cb28ec45233fff6d7ad3865a0268aa1bd8",
               "deps": [
                 "npm:commander",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:axios",
                 "npm:colors"
               ]
@@ -3550,7 +3550,7 @@
               "deps": [
                 "npm:async",
                 "npm:colors",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:util",
                 "npm:signale"
               ]
@@ -3560,7 +3560,7 @@
               "hash": "f6cb8cbcf33ea2c17d14ac72a6a9fb5f7cfab9f1",
               "deps": [
                 "npm:async",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:events",
                 "npm:colors"
               ]
@@ -3571,7 +3571,7 @@
               "deps": [
                 "npm:async",
                 "npm:change-case",
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -3663,7 +3663,7 @@
               "hash": "cbdc1c4aa1d5796d96e74c6fe8776e616e96dcf9",
               "deps": [
                 "npm:async",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:assert"
               ]
             },
@@ -4081,7 +4081,7 @@
               "hash": "adfd0e6cfb026a1453c3996328a051d8ef7da27a",
               "deps": [
                 "npm:react",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@remixproject/plugin",
                 "npm:formik"
               ]
@@ -5059,7 +5059,7 @@
                 "npm:react",
                 "npm:util",
                 "npm:@remixproject/engine",
-                "packages/web3.js/packages/web3-core"
+                "packages/web3-core"
               ]
             },
             {
@@ -5095,7 +5095,7 @@
               "deps": [
                 "npm:react",
                 "npm:react-intl",
-                "packages/ethereumjs-monorepo/packages/common"
+                "packages/common"
               ]
             },
             {
@@ -5146,7 +5146,7 @@
               "file": "apps/remix-ide/src/app/providers/injected-ephemery-testnet-provider.tsx",
               "hash": "879c468b6a2562254dad90c6de84e0c1d1d424df",
               "deps": [
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -5221,7 +5221,7 @@
               "file": "apps/remix-ide/src/app/tabs/debugger-tab.js",
               "hash": "03bd672110506204a0c55c3cd2ca45b63271504f",
               "deps": [
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@remixproject/engine-web",
                 "npm:react"
               ]
@@ -5499,7 +5499,7 @@
               "hash": "ea7a1c0c6ef800d80946517ade15e9e2df62529b",
               "deps": [
                 "npm:@remixproject/engine",
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -5507,7 +5507,7 @@
               "hash": "f1d67391170c45b2516fa91a1f17588d22d02bd1",
               "deps": [
                 "npm:async",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:@remixproject/engine"
               ]
             },
@@ -5987,9 +5987,9 @@
               "hash": "c698fd9c40ca72b8023b98f3d79ed67cf7b2c8b8",
               "deps": [
                 "npm:react",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@remixproject/engine",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:events",
                 "npm:util"
               ]
@@ -5998,7 +5998,7 @@
               "file": "apps/remix-ide/src/blockchain/execution-context.js",
               "hash": "d730a130e3a0f479e1b842c9334b7ce73a8dfd4e",
               "deps": [
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -6009,25 +6009,25 @@
               "file": "apps/remix-ide/src/blockchain/providers/injected.ts",
               "hash": "bc6ab49e7f11c87183ba9dfa72c19eac432901cd",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/web3",
+                "packages/util"
               ]
             },
             {
               "file": "apps/remix-ide/src/blockchain/providers/node.ts",
               "hash": "65116b4923eb71e08b1aa500e4bfed3839eae47e",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/ethereumjs-monorepo/packages/util",
-                "packages/web3.js/packages/web3-eth-personal"
+                "packages/web3",
+                "packages/util",
+                "packages/web3-eth-personal"
               ]
             },
             {
               "file": "apps/remix-ide/src/blockchain/providers/vm.ts",
               "hash": "4234e42616a79ff6f151ecc0971d5a9557576900",
               "deps": [
-                "packages/web3.js/packages/web3",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/web3",
+                "packages/util",
                 "npm:bn.js"
               ]
             },
@@ -6075,7 +6075,7 @@
               "hash": "d332c7e9371f4ff48a534a12da006e57c85be7ad",
               "deps": [
                 "npm:async",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -6229,7 +6229,7 @@
               "file": "libs/remix-lib/package.json",
               "hash": "afec35ad63cac130f215898247723a64a6a69293",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:async",
                 "npm:ethers",
                 "npm:ethjs-util",
@@ -6237,7 +6237,7 @@
                 "npm:from-exponential",
                 "npm:solc",
                 "npm:string-similarity",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@babel/core",
                 "npm:@babel/plugin-transform-object-assign",
                 "npm:@babel/preset-env",
@@ -6275,7 +6275,7 @@
               "hash": "a8ae3ec3c8e59fdf596bb6958544a52c13a22012",
               "deps": [
                 "npm:async",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -6292,7 +6292,7 @@
                 "npm:ethers",
                 "npm:async",
                 "npm:solc",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:from-exponential"
               ]
             },
@@ -6308,7 +6308,7 @@
               "hash": "d4251f029743000497374c5ce2f605834feaefca",
               "deps": [
                 "npm:ethers",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -6319,18 +6319,18 @@
               "file": "libs/remix-lib/src/execution/txRunnerVM.ts",
               "hash": "31364c045a7d1c3f4c160b1faef4df2e3b8fce6d",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/vm",
-                "packages/ethereumjs-monorepo/packages/common",
-                "packages/ethereumjs-monorepo/packages/tx",
-                "packages/ethereumjs-monorepo/packages/block",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/vm",
+                "packages/common",
+                "packages/tx",
+                "packages/block",
+                "packages/util"
               ]
             },
             {
               "file": "libs/remix-lib/src/execution/txRunnerWeb3.ts",
               "hash": "ab754c0feff6d42c8ab5b10f3e9a79bf1f37d1be",
               "deps": [
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -6338,7 +6338,7 @@
               "hash": "46a25bff8afae7898e32b39683cc69b96dc5ae8a",
               "deps": [
                 "npm:bn.js",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -6348,7 +6348,7 @@
                 "npm:ethereum-cryptography",
                 "npm:create-hash",
                 "npm:rlp",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -6363,7 +6363,7 @@
               "file": "libs/remix-lib/src/helpers/txResultHelper.ts",
               "hash": "a7a89163c6ede005e74e18e03966b6bdb6bb9a5d",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:ethjs-util"
               ]
             },
@@ -6379,7 +6379,7 @@
               "file": "libs/remix-lib/src/init.ts",
               "hash": "b59d10b4a44f7362e4ba7cd08cb044437df36b19",
               "deps": [
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -6398,7 +6398,7 @@
               "file": "libs/remix-lib/src/util.ts",
               "hash": "f28d6c80c0ab6e09f087609755241a0e8d29f9ad",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:string-similarity"
               ]
             },
@@ -6446,7 +6446,7 @@
               "deps": [
                 "npm:tape",
                 "npm:bn.js",
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -6821,7 +6821,7 @@
               "file": "libs/remix-ui/debugger-ui/src/lib/api/debugger-api.ts",
               "hash": "0879471fe83fef93bda139f46f01dd615bbbad25",
               "deps": [
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -6936,7 +6936,7 @@
               "deps": [
                 "npm:react",
                 "npm:bn.js",
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -7270,7 +7270,7 @@
               "file": "libs/remix-ui/helper/src/lib/remix-ui-helper.ts",
               "hash": "21925ed8f84761710b12b87a44180e704dadb886",
               "deps": [
-                "packages/ethereumjs-monorepo/packages/util"
+                "packages/util"
               ]
             },
             {
@@ -7715,7 +7715,7 @@
               "hash": "3929f787b11289f4b2d5f0956c558ef0561c33f2",
               "deps": [
                 "npm:@openzeppelin/upgrades-core",
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -7723,7 +7723,7 @@
               "hash": "8377f8920d48cd8ae368283e831d03283325a6d6",
               "deps": [
                 "npm:bn.js",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:@remixproject/engine"
               ]
             },
@@ -7757,7 +7757,7 @@
               "deps": [
                 "npm:react",
                 "npm:react-intl",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:process"
               ]
             },
@@ -7817,7 +7817,7 @@
               "deps": [
                 "npm:react",
                 "npm:react-intl",
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -7870,7 +7870,7 @@
               "deps": [
                 "npm:react",
                 "npm:react-intl",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:bn.js"
               ]
             },
@@ -7920,7 +7920,7 @@
               "file": "libs/remix-ui/run-tab/src/lib/types/execution-context.d.ts",
               "hash": "dd7c244c6de73ec295e6d0addd9f0b880077aa2f",
               "deps": [
-                "packages/web3.js/packages/web3"
+                "packages/web3"
               ]
             },
             {
@@ -8290,7 +8290,7 @@
                 "npm:react-intl",
                 "npm:semver",
                 "npm:async",
-                "packages/web3.js/packages/web3",
+                "packages/web3",
                 "npm:util",
                 "npm:is-electron"
               ]
@@ -8700,7 +8700,7 @@
               "hash": "0f9166f5f17a42f96124a1dffab4e65d3d8f0b09",
               "deps": [
                 "npm:react",
-                "packages/ethereumjs-monorepo/packages/util",
+                "packages/util",
                 "npm:axios",
                 "remix-ide",
                 "npm:is-electron"
