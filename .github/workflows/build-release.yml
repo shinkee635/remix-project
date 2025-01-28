@@ -9,14 +9,12 @@ jobs:
     
     steps:
       - name: Checkout solidity76
-        uses: actions/checkout@v4
-        with:
-          repository: shinkee635/solidity76
-          ref: master 
+        run: |
+          git clone --branch master https://github.com/shinkee635/solidity76.git
+          cd solidity76
 
       - name: Build Docker
         run: |
-          pwd && ls && pwd ../ && ls ../
           chmod +x scripts/ci/docker_build.sh
           cp scripts/docker/buildpack-deps/emscripten.jam ./
           scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
@@ -37,10 +35,9 @@ jobs:
 
     steps:
       - name: Checkout ethereumjs-monorepo
-        uses: actions/checkout@v4
-        with:
-          repository: shinkee635/ethereumjs-monorepo
-          ref: util32
+        run: |
+          git clone --branch util32 https://github.com/shinkee635/ethereumjs-monorepo.git
+          cd ethereumjs-monorepo
 
       - uses: actions/setup-node@v3
         with:
@@ -49,7 +46,7 @@ jobs:
       - name: Install ethereumjs-monorepo packages
         run: |
           npm i
-      - run: pwd && ls && cd .. && pwd && ls && tar -cjf ethereumjs.tar.bz2 ethereumjs-monorepo
+      - run: cd .. && tar -cjf ethereumjs.tar.bz2 ethereumjs-monorepo
       - uses: actions/upload-artifact@v4
         with:
           name: ethereumjs
@@ -59,11 +56,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Web3
-        uses: actions/checkout@v4
-        with:
-          repository: shinkee635/web3.js
-          ref: v4.3address32
+      - name: Checkout web3.js
+        run: |
+          git clone --branch v4.3address32 https://github.com/shinkee635/web3.js.git
+          cd web3.js
 
       - uses: actions/setup-node@v3
         with:
@@ -71,7 +67,7 @@ jobs:
           cache: yarn
       - run: yarn install --ignore-scripts
       - run: yarn build
-      - run: pwd && ls && cd .. && pwd && ls && tar -cjf web3js.tar.bz2 web3.js
+      - run: cd .. && tar -cjf web3js.tar.bz2 web3.js
       - uses: actions/upload-artifact@v4
         with:
           name: web3js
@@ -121,4 +117,3 @@ jobs:
         with:
           name: remix-release
           path: remix-release.tar.bz2
-
