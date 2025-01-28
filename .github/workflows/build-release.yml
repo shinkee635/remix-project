@@ -8,18 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Checkout External Repository
+        uses: actions/checkout@v3
+        with:
+          repository: shinkee635/solidity76
+          ref: master
+          path: solidity76
+
+      - name: Set GITHUB_WORKSPACE to Solidity76
+        run: echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE/solidity76" >> $GITHUB_ENV
+      
       - name: Build soljson
+        env:
+          GITHUB_WORKSPACE: ${{ env.GITHUB_WORKSPACE }}
         run: |
-          git clone --branch master https://github.com/shinkee635/solidity76.git
-          pwd && ls
           cd solidity76
-          pwd && ls
           chmod +x scripts/ci/docker_build.sh
-          echo "Execute 1"
           cp scripts/docker/buildpack-deps/emscripten.jam ./
-          echo "Execute 2"
           scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
-          echo "Execute 3"
           scripts/build_emscripten.sh
 
       - name: Upload Artifact 
@@ -36,11 +42,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: npm
 
+      - name: Checkout ethereumjs-monorepo
+        uses: actions/checkout@v3
+        with:
+          repository: shinkee635/ethereumjs-monorepo
+          ref: util32
+          path: ethereumjs-monorepo
+      
       - name: Build ethereumjs-monorepo
         run: |
-          git clone --branch util32 https://github.com/shinkee635/ethereumjs-monorepo.git
           cd ethereumjs-monorepo
           npm i
           cd .. && tar -cjf ethereumjs.tar.bz2 ethereumjs-monorepo
@@ -57,15 +68,21 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: yarn
+
+      - name: Checkout web3.js
+        uses: actions/checkout@v3
+        with:
+          repository: shinkee635/web3.js
+          ref: v4.3address32
+          path: web3.js
 
       - name: Build web3.js
         run: |
-          git clone --branch v4.3address32 https://github.com/shinkee635/web3.js.git
           cd web3.js
           yarn install --ignore-scripts
           yarn build
           cd .. && tar -cjf web3js.tar.bz2 web3.js
+
       - uses: actions/upload-artifact@v4
         with:
           name: web3js
