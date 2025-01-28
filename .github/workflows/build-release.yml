@@ -16,8 +16,6 @@ jobs:
           path: solidity76
       
       - name: Build soljson
-        env:
-          GITHUB_WORKSPACE: ${{ env.GITHUB_WORKSPACE }}/solidity76
         run: |
           cd solidity76
           chmod +x scripts/ci/docker_build.sh
