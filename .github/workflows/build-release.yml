@@ -48,7 +48,7 @@ jobs:
       - name: Install ethereumjs-monorepo packages
         run: |
           npm i
-      - run: ls && cd .. && ls && tar -cjf ethereumjs.tar.bz2 ethereumjs-monorepo
+      - run: pwd && ls && cd .. && pwd && ls && tar -cjf ethereumjs.tar.bz2 ethereumjs-monorepo
       - uses: actions/upload-artifact@v4
         with:
           name: ethereumjs
@@ -70,7 +70,7 @@ jobs:
           cache: yarn
       - run: yarn install --ignore-scripts
       - run: yarn build
-      - run: ls && cd .. && ls && tar -cjf web3js.tar.bz2 web3.js
+      - run: pwd && ls && cd .. && pwd && ls && tar -cjf web3js.tar.bz2 web3.js
       - uses: actions/upload-artifact@v4
         with:
           name: web3js
