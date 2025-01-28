@@ -19,7 +19,7 @@ jobs:
           # chmod +x scripts/ci/docker_build.sh
           # cp scripts/docker/buildpack-deps/emscripten.jam ./
           # scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
-          ls -la solidity76
+          ls -la && ls -la solidity76
 
       # - name: Run EMScripten Build
       #   run: |
@@ -49,7 +49,7 @@ jobs:
       - name: Install ethereumjs-monorepo packages
         run: |
           # npm i
-          ls -la ethereumjs-monorepo
+          ls -la && ls -la ethereumjs-monorepo
       # - run: cd .. && tar -cjf ethereumjs.tar.bz2 ethereumjs-monorepo
       # - uses: actions/upload-artifact@v3
       #   with:
@@ -70,7 +70,7 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-      - run: ls -la web3.js
+      - run: ls -la && ls -la web3.js
       # - run: yarn install --ignore-scripts
       # - run: yarn build
       # - run: cd .. && tar -cjf web3js.tar.bz2 web3.js
