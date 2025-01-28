@@ -16,6 +16,7 @@ jobs:
 
       - name: Build Docker
         run: |
+          pwd && ls
           chmod +x scripts/ci/docker_build.sh
           cp scripts/docker/buildpack-deps/emscripten.jam ./
           scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
