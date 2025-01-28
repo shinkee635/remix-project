@@ -11,6 +11,7 @@ jobs:
       - name: Checkout solidity76
         run: |
           git clone --branch master https://github.com/shinkee635/solidity76.git
+          pwd && ls && ls solidity76
           cd solidity76
 
       - name: Build Docker
