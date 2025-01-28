@@ -11,7 +11,9 @@ jobs:
       - name: Build soljson
         run: |
           git clone --branch master https://github.com/shinkee635/solidity76.git
+          pwd && ls
           cd solidity76
+          pwd && ls
           chmod +x scripts/ci/docker_build.sh
           cp scripts/docker/buildpack-deps/emscripten.jam ./
           scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
@@ -21,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: soljson
-          path: solidity76/upload
+          path: /home/runner/remix-project/remix-project/solidity76/upload/soljson.js
 
 
   build-ethereumjs:
