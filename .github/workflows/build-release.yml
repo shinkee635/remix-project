@@ -1,0 +1,86 @@
+name: Build Release
+on:
+  push:
+    branches: [master]
+  
+jobs:
+  build-soljson:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout solidity76
+        uses: actions/checkout@v4
+        with:
+          repository: shinkee635/solidity76
+          ref: master 
+
+      - name: Build Docker
+        run: |
+          # chmod +x scripts/ci/docker_build.sh
+          # cp scripts/docker/buildpack-deps/emscripten.jam ./
+          # scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
+          ls -la solidity76
+
+      # - name: Run EMScripten Build
+      #   run: |
+      #     scripts/build_emscripten.sh
+
+      # - name: Upload Artifact 
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: soljson
+      #     path: ${{ github.workspace }}/upload
+
+
+  build-ethereumjs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout ethereumjs-monorepo
+        uses: actions/checkout@v4
+        with:
+          repository: shinkee635/ethereumjs-monorepo
+          ref: util32
+
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 20
+      #     cache: npm
+      - name: Install ethereumjs-monorepo packages
+        run: |
+          # npm i
+          ls -la ethereumjs-monorepo
+      # - run: cd .. && tar -cjf ethereumjs.tar.bz2 ethereumjs-monorepo
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: ethereumjs
+      #     path: /home/runner/work/ethereumjs-monorepo/ethereumjs.tar.bz2
+  
+  build-web3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Web3
+        uses: actions/checkout@v4
+        with:
+          repository: shinkee635/web3.js
+          ref: v4.3address32
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - run: ls -la web3.js
+      # - run: yarn install --ignore-scripts
+      # - run: yarn build
+      # - run: cd .. && tar -cjf web3js.tar.bz2 web3.js
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: web3js
+      #     path: /home/runner/work/web3.js/web3js.tar.bz2
+    
+  # build-remix:
+  #   runs-on: ubuntu-latest
+        
+  #   needs: [build-soljson, build-ethereumjs, build-web3]
+
