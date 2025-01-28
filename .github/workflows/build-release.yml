@@ -14,13 +14,10 @@ jobs:
           repository: shinkee635/solidity76
           ref: master
           path: solidity76
-
-      - name: Set GITHUB_WORKSPACE to Solidity76
-        run: echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE/solidity76" >> $GITHUB_ENV
       
       - name: Build soljson
         env:
-          GITHUB_WORKSPACE: ${{ env.GITHUB_WORKSPACE }}
+          GITHUB_WORKSPACE: ${{ env.GITHUB_WORKSPACE }}/solidity76
         run: |
           cd solidity76
           chmod +x scripts/ci/docker_build.sh
