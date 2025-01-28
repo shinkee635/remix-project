@@ -15,8 +15,11 @@ jobs:
           cd solidity76
           pwd && ls
           chmod +x scripts/ci/docker_build.sh
+          echo "Execute 1"
           cp scripts/docker/buildpack-deps/emscripten.jam ./
+          echo "Execute 2"
           scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
+          echo "Execute 3"
           scripts/build_emscripten.sh
 
       - name: Upload Artifact 
