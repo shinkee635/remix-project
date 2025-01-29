@@ -22,12 +22,14 @@ jobs:
           cp scripts/docker/buildpack-deps/emscripten.jam ./
           scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
           scripts/build_emscripten.sh
+          ls && ls upload
+          cd .. && ls && ls solidity76
 
       - name: Upload Artifact 
         uses: actions/upload-artifact@v4
         with:
           name: soljson
-          path: /home/runner/remix-project/remix-project/solidity76/upload/soljson.js
+          path: solidity76/upload/soljson.js
 
 
   build-ethereumjs:
