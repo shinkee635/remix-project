@@ -22,8 +22,6 @@ jobs:
           cp scripts/docker/buildpack-deps/emscripten.jam ./
           scripts/ci/docker_build.sh buildpack-deps emscripten solbuildpackpusher/solidity-buildpack-deps ems
           scripts/build_emscripten.sh
-          ls && ls upload
-          cd .. && ls && ls solidity76
 
       - name: Upload Artifact 
         uses: actions/upload-artifact@v4
