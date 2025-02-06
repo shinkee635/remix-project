@@ -118,7 +118,7 @@ jobs:
           cache: yarn
         
       - run: |
-          yarn install && yarn build
+          yarn install && yarn run build:production
           cd ..
           tar -cjf remix-release.tar.bz2 remix-project
 
