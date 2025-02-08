@@ -3,8 +3,8 @@ import * as semver from 'semver'
 
 // export const baseURLBin = 'https://binaries.soliditylang.org/bin'
 // export const baseURLWasm = 'https://binaries.soliditylang.org/wasm'
-export const baseURLBin = 'http://54.79.158.175/assets'
-export const baseURLWasm = 'http://54.79.158.175/assets'
+export const baseURLBin = 'http://54.79.158.175:8080/assets'
+export const baseURLWasm = 'http://54.79.158.175:8080/assets'
 
 export const pathToURL = {}
 
