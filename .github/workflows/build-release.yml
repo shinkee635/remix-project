@@ -125,11 +125,11 @@ jobs:
         
       - run: |
           yarn install && yarn run build:production
-          cd ..
-          tar -cjf remix-release.tar.bz2 remix-project
+          cd dist/apps/
+          tar -cjf remix-ide-dist.tar.bz2 remix-ide
 
       - name: Upload final artifact
         uses: actions/upload-artifact@v4
         with:
           name: remix-release
-          path: /home/runner/work/remix-project/remix-release.tar.bz2
+          path: /home/runner/work/remix-project/dist/apps/remix-ide-dist
