@@ -89,7 +89,7 @@ jobs:
           name: web3js
           path: web3js.tar.bz2
     
-  build-remix:
+  build-remix-web:
     runs-on: ubuntu-latest
         
     needs: [build-soljson, build-ethereumjs, build-web3]
@@ -126,37 +126,84 @@ jobs:
           yarn install && yarn run build:production
           cd dist/apps/
           cp -r remix-ide build
-          zip -r remix-ide-dist.zip build
+          zip -r remix-ide-web.zip build
 
       - name: Upload final artifact
         uses: actions/upload-artifact@v4
         with:
-          name: remix-ide-dist
-          path: dist/apps/remix-ide-dist.zip
+          name: remix-web
+          path: dist/apps/remix-ide-web.zip
+
+  build-remix-desktop:
+    runs-on: ubuntu-latest
+        
+    needs: [build-soljson, build-ethereumjs, build-web3]
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download soljson artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: soljson
+
+      - name: Download ethereumjs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ethereumjs
+
+      - name: Download web3 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: web3js
+
+      - name: Extract artifacts
+        run: |
+          tar -xjf ethereumjs.tar.bz2
+          tar -xjf web3js.tar.bz2
+
+      - name: Build Remix and package zip file
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+        
+      - run: |
+          yarn install && yarn run build:desktop
+          cd dist/apps/
+          cp -r remix-ide build
+          zip -r remix-ide-desktop.zip build
+
+      - name: Upload final artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: remix-desktop
+          path: dist/apps/remix-ide-desktop.zip
 
   build-remix-desktop-windows:
     runs-on: windows-latest
 
-    needs: build-remix
+    needs: build-remix-desktop
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Download dist files
+    - name: Download remix-ide files
       uses: actions/download-artifact@v4
       with:
-        name: remix-ide-dist
+        name: remix-desktop
 
-    - name: Extract dist files
+    - name: Extract remix-ide files
       run: |
-        unzip remix-ide-dist.zip -d apps/remixdesktop
+        unzip remix-ide-desktop.zip -d apps/remixdesktop
 
-    - name: Build
+    - name: Setup Node
       uses: actions/setup-node@v4
       with:
         node-version: 20.2
 
-    - run: |
+    - name: Build
+      shell: bash
+      run: |
         npm install -g yarn node-gyp
         cd apps/remixdesktop
         yarn
@@ -171,19 +218,19 @@ jobs:
   build-remix-desktop-linux:
     runs-on: ubuntu-latest
       
-    needs: build-remix
+    needs: build-remix-desktop
     
     steps:
     - uses: actions/checkout@v4
       
-    - name: Download dist files
+    - name: Download remix-ide files
       uses: actions/download-artifact@v4
       with:
-        name: remix-ide-dist
+        name: remix-desktop
       
-    - name: Extract dist files
+    - name: Extract remix-ide files
       run: |
-        unzip remix-ide-dist.zip -d apps/remixdesktop
+        unzip remix-ide-desktop.zip -d apps/remixdesktop
       
     - name: Build
       uses: actions/setup-node@v4
@@ -207,7 +254,7 @@ jobs:
   build-remix-desktop-mac:
     runs-on: macos-13
 
-    needs: build-remix
+    needs: build-remix-desktop
     strategy:
       matrix:
         arch: [arm64, x64]
@@ -215,21 +262,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Download dist files
+    - name: Download remix-ide files
       uses: actions/download-artifact@v4
       with:
-        name: remix-ide-dist
+        name: remix-desktop
 
-    - name: Extract dist files
+    - name: Extract remix-ide files
       run: |
-        unzip remix-ide-dist.zip -d apps/remixdesktop
+        unzip remix-ide-desktop.zip -d apps/remixdesktop
 
-    - name: Build
+    - name: Setuo Node
       uses: actions/setup-node@v4
       with:
         node-version: 20.2
 
-    - run: |
+    - name: Build
+      run: |
         npm install -g yarn node-gyp
         cd apps/remixdesktop
         yarn || yarn
