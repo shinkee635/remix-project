@@ -170,8 +170,7 @@ jobs:
       - run: |
           yarn install && yarn run build:desktop
           cd dist/apps/
-          cp -r remix-ide build
-          zip -r remix-ide-desktop.zip build
+          zip -r remix-ide-desktop.zip remix-ide
 
       - name: Upload final artifact
         uses: actions/upload-artifact@v4
@@ -194,7 +193,8 @@ jobs:
 
     - name: Extract remix-ide files
       run: |
-        unzip remix-ide-desktop.zip -d apps/remixdesktop
+        mkdir -p apps/remixdesktop/build
+        unzip remix-ide-desktop.zip -d apps/remixdesktop/build
 
     - name: Setup Node
       uses: actions/setup-node@v4
@@ -230,7 +230,8 @@ jobs:
       
     - name: Extract remix-ide files
       run: |
-        unzip remix-ide-desktop.zip -d apps/remixdesktop
+        mkdir -p apps/remixdesktop/build
+        unzip remix-ide-desktop.zip -d apps/remixdesktop/build
       
     - name: Build
       uses: actions/setup-node@v4
@@ -269,7 +270,8 @@ jobs:
 
     - name: Extract remix-ide files
       run: |
-        unzip remix-ide-desktop.zip -d apps/remixdesktop
+        mkdir -p apps/remixdesktop/build
+        unzip remix-ide-desktop.zip -d apps/remixdesktop/build
 
     - name: Setuo Node
       uses: actions/setup-node@v4
