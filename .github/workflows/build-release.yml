@@ -117,23 +117,22 @@ jobs:
           tar -xjf ethereumjs.tar.bz2
           tar -xjf web3js.tar.bz2
 
-      - name: Build Remix
+      - name: Build Remix and package zip file
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: yarn
         
       - run: |
           yarn install && yarn run build:production
           cd dist/apps/
           cp -r remix-ide build
-          tar -cjf remix-ide-dist.tar.bz2 build
+          zip -r remix-ide-dist.zip build
 
       - name: Upload final artifact
         uses: actions/upload-artifact@v4
         with:
           name: remix-ide-dist
-          path: dist/apps/remix-ide-dist.tar.bz2
+          path: dist/apps/remix-ide-dist.zip
 
   build-remix-desktop-windows:
     runs-on: windows-latest
@@ -150,7 +149,7 @@ jobs:
 
     - name: Extract dist files
       run: |
-        tar -xjf remix-ide-dist.tar.bz2 -C apps/remixdesktop
+        unzip remix-ide-dist.zip -d apps/remixdesktop
 
     - name: Build
       uses: actions/setup-node@v4
@@ -184,7 +183,7 @@ jobs:
       
     - name: Extract dist files
       run: |
-        tar -xjf remix-ide-dist.tar.bz2 -C apps/remixdesktop
+        unzip remix-ide-dist.zip -d apps/remixdesktop
       
     - name: Build
       uses: actions/setup-node@v4
@@ -199,8 +198,6 @@ jobs:
         yarn add @remix-project/remix-ws-templates
         ./rundist.bash
         rm -rf release/*-unpacked
-        rm -rf release/.icon*
-        rm -rf release/builder*
 
     - uses: actions/upload-artifact@v4
       with:
@@ -225,7 +222,7 @@ jobs:
 
     - name: Extract dist files
       run: |
-        tar -xjf remix-ide-dist.tar.bz2 -C apps/remixdesktop
+        unzip remix-ide-dist.zip -d apps/remixdesktop
 
     - name: Build
       uses: actions/setup-node@v4
@@ -245,10 +242,6 @@ jobs:
           mv release/latest-mac.yml release/latest-mac-<< parameters.arch >>.yml
         fi
         find build
-        rm -rf ~/remix-project/apps/remixdesktop/release/.icon*
-        rm -rf ~/remix-project/apps/remixdesktop/release/builder*
-        rm -rf ~/remix-project/apps/remixdesktop/release/*.blockmap
-        rm -rf ~/remix-project/apps/remixdesktop/release/_.*
 
     - uses: actions/upload-artifact@v4
       with:
