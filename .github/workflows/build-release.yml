@@ -315,7 +315,7 @@ jobs:
     - name: Setuo Node
       uses: actions/setup-node@v4
       with:
-        node-version: 20.5
+        node-version: 20.2
 
     - name: Build
       run: |
