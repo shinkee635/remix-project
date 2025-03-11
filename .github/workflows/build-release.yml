@@ -336,5 +336,5 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: remixdesktop-windows
+        name: remixdesktop-mac
         path: apps/remixdesktop/release

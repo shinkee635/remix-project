@@ -30,7 +30,7 @@
     },
     "dmg": {
         "writeUpdateInfo": true,
-        "sign": true
+        "sign": false
     },
     "nsis": {
         "createDesktopShortcut": "always",
