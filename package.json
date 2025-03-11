@@ -463,6 +463,6 @@
     "@ethersproject/units": "file:ethers.js/packages/units",
     "@ethersproject/wallet": "file:ethers.js/packages/wallet",
     "@ethersproject/web": "file:ethers.js/packages/web",
-    "@ethersproject/wordlists": "file:ethers.js/packages/wordlists",
+    "@ethersproject/wordlists": "file:ethers.js/packages/wordlists"
   }
 }
