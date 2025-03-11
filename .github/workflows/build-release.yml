@@ -189,7 +189,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: web3js
-          
+
       - name: Download ethersjs artifact
         uses: actions/download-artifact@v4
         with:
@@ -315,12 +315,15 @@ jobs:
     - name: Setuo Node
       uses: actions/setup-node@v4
       with:
-        node-version: 20.2
+        node-version: 20.5
 
     - name: Build
       run: |
+        xcode-select --install
         npm install -g yarn node-gyp
+        pip install setuptools
         cd apps/remixdesktop
+        yarn add node-pty
         yarn || yarn
         find ./node_modules
         yarn add @remix-project/remix-ws-templates
