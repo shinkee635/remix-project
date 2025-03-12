@@ -1,0 +1,19 @@
+{
+  "name": "macOS Dev Container",
+  "image": "mcr.microsoft.com/vscode/devcontainers/universal:linux", 
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": []
+    }
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "remoteUser": "codespace",
+  "containerEnv": {
+    "MACOS_VERSION": "14.0"
+  },
+  "postCreateCommand": "echo 'Dev container is ready for macOS testing!'"
+}
