@@ -330,9 +330,8 @@ jobs:
         PUBLISH_FOR_PULL_REQUEST='false' USE_HARD_LINKS=false ./rundist.bash --${{ matrix.arch }}
         if [ -f release/latest-mac.yml ]; then
           cat release/latest-mac.yml
-          mv release/latest-mac.yml release/latest-mac-<< parameters.arch >>.yml
+          mv release/latest-mac.yml release/latest-mac-${{ matrix.arch }}.yml
         fi
-        find build
 
     - uses: actions/upload-artifact@v4
       with:
