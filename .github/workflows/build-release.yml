@@ -322,8 +322,7 @@ jobs:
         npm install -g yarn node-gyp
         pip install setuptools
         cd apps/remixdesktop
-        yarn add node-pty
-        yarn || yarn
+        yarn --ignore-optional
         find ./node_modules
         yarn add @remix-project/remix-ws-templates
         yarn installRipGrepMacOX${{ matrix.arch }}
@@ -332,6 +331,7 @@ jobs:
           cat release/latest-mac.yml
           mv release/latest-mac.yml release/latest-mac-${{ matrix.arch }}.yml
         fi
+        find ./build
 
     - uses: actions/upload-artifact@v4
       with:
