@@ -297,7 +297,7 @@ jobs:
     needs: build-remix-desktop
     strategy:
       matrix:
-        arch: [arm64, x64]
+        arch: [arm64]
 
     steps:
     - uses: actions/checkout@v4
