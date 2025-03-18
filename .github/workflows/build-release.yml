@@ -386,3 +386,4 @@ jobs:
       with:
         name: remixdesktop-mac-${{ env.ARCH }}
         path: apps/remixdesktop/release
+        
