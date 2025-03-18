@@ -291,13 +291,12 @@ jobs:
         name: remixdesktop-linux
         path: apps/remixdesktop/release
 
-  build-remix-desktop-mac:
+  build-remix-desktop-mac-arm64:
     runs-on: macos-13
 
     needs: build-remix-desktop
-    strategy:
-      matrix:
-        arch: [arm64, x64]
+    env:
+      ARCH: arm64
 
     steps:
     - uses: actions/checkout@v4
@@ -325,15 +324,61 @@ jobs:
         yarn --ignore-optional
         find ./node_modules
         yarn add @remix-project/remix-ws-templates
-        yarn installRipGrepMacOX${{ matrix.arch }}
-        PUBLISH_FOR_PULL_REQUEST='false' USE_HARD_LINKS=false ./rundist.bash --${{ matrix.arch }}
+        yarn installRipGrepMacOX${{ env.ARCH }}
+        PUBLISH_FOR_PULL_REQUEST='false' USE_HARD_LINKS=false ./rundist.bash --${{ env.ARCH }}
         if [ -f release/latest-mac.yml ]; then
           cat release/latest-mac.yml
-          mv release/latest-mac.yml release/latest-mac-${{ matrix.arch }}.yml
+          mv release/latest-mac.yml release/latest-mac-${{ env.ARCH }}.yml
         fi
         find ./release
 
     - uses: actions/upload-artifact@v4
       with:
-        name: remixdesktop-mac-${{ matrix.arch }}
+        name: remixdesktop-mac-${{ env.ARCH }}
+        path: apps/remixdesktop/release
+
+  build-remix-desktop-mac-x64:
+    runs-on: macos-13
+
+    needs: build-remix-desktop
+    env:
+      ARCH: x64
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Download remix-ide files
+      uses: actions/download-artifact@v4
+      with:
+        name: remix-desktop
+
+    - name: Extract remix-ide files
+      run: |
+        mkdir -p apps/remixdesktop/build
+        unzip remix-ide-desktop.zip -d apps/remixdesktop/build
+
+    - name: Setuo Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.2
+
+    - name: Build
+      run: |
+        npm install -g yarn node-gyp
+        pip install setuptools
+        cd apps/remixdesktop
+        yarn --ignore-optional
+        find ./node_modules
+        yarn add @remix-project/remix-ws-templates
+        yarn installRipGrepMacOX${{ env.ARCH }}
+        PUBLISH_FOR_PULL_REQUEST='false' USE_HARD_LINKS=false ./rundist.bash --${{ env.ARCH }}
+        if [ -f release/latest-mac.yml ]; then
+          cat release/latest-mac.yml
+          mv release/latest-mac.yml release/latest-mac-${{ env.ARCH }}.yml
+        fi
+        find ./release
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: remixdesktop-mac-${{ env.ARCH }}
         path: apps/remixdesktop/release
