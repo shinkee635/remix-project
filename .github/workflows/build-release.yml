@@ -318,8 +318,9 @@ jobs:
 
     - name: Build
       run: |
-        npm install -g yarn node-gyp ripgrep
+        npm install -g yarn node-gyp
         pip install setuptools
+        yarn global add @vscode/ripgrep
         cd apps/remixdesktop
         yarn --ignore-optional
         find ./node_modules
@@ -364,8 +365,9 @@ jobs:
 
     - name: Build
       run: |
-        npm install -g yarn node-gyp ripgrep
+        npm install -g yarn node-gyp
         pip install setuptools
+        yarn global add @vscode/ripgrep
         cd apps/remixdesktop
         yarn --ignore-optional
         find ./node_modules
