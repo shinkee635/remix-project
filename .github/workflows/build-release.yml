@@ -318,7 +318,7 @@ jobs:
 
     - name: Build
       run: |
-        npm install -g yarn node-gyp
+        npm install -g yarn node-gyp ripgrep
         pip install setuptools
         cd apps/remixdesktop
         yarn --ignore-optional
