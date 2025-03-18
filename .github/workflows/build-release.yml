@@ -297,7 +297,7 @@ jobs:
     needs: build-remix-desktop
     strategy:
       matrix:
-        arch: [arm64]
+        arch: [arm64, x64]
 
     steps:
     - uses: actions/checkout@v4
@@ -331,9 +331,9 @@ jobs:
           cat release/latest-mac.yml
           mv release/latest-mac.yml release/latest-mac-${{ matrix.arch }}.yml
         fi
-        find ./build
+        find ./release
 
     - uses: actions/upload-artifact@v4
       with:
-        name: remixdesktop-mac
+        name: remixdesktop-mac-${{ matrix.arch }}
         path: apps/remixdesktop/release
