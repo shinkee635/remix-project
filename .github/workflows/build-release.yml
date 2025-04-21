@@ -150,16 +150,20 @@ jobs:
           tar -xjf web3js.tar.bz2
           tar -xjf ethersjs.tar.bz2
 
-      - name: Build Remix and package zip file
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
         
-      - run: |
+      - name: Build project and package zip file
+        run: |
           yarn install && yarn run build:production
           cd dist/apps/
           cp -r remix-ide build
           zip -r remix-ide-web.zip build
+
+      - name: Analyze vulnerabilities
+        run: yarn audit
 
       - name: Upload final artifact
         uses: actions/upload-artifact@v4
