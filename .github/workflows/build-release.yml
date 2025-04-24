@@ -208,7 +208,7 @@ jobs:
       - name: Build Remix and package zip file
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.2
         
       - run: |
           yarn install && yarn run build:desktop
@@ -242,7 +242,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v4
       with:
-        node-version: 20.9
+        node-version: 20.2
 
     - name: Build
       shell: bash
@@ -279,7 +279,7 @@ jobs:
     - name: Build
       uses: actions/setup-node@v4
       with:
-        node-version: 20.9
+        node-version: 20.2
       
     - run: |
         npm install -g yarn node-gyp
@@ -318,7 +318,7 @@ jobs:
     - name: Setuo Node
       uses: actions/setup-node@v4
       with:
-        node-version: 20.9
+        node-version: 20.2
 
     - name: Build
       run: |
