@@ -1,5 +1,5 @@
 import { toHex, toNumber, toBigInt } from 'web3-utils'
-import { toChecksumAddress, Address, bigIntToHex, bytesToHex } from '@ethereumjs/util'
+import { toChecksumAddress, Address, createAddressFromString, bigIntToHex, bytesToHex } from '@ethereumjs/util'
 import { processTx } from './txProcess'
 import { execution } from '@remix-project/remix-lib'
 import { ethers } from 'ethers'
@@ -16,6 +16,29 @@ export type VMExecResult = {
   gasRefund: bigint
   logs: Log[]
   returnValue: string
+}
+
+function getBaseFee(tx): bigint {
+  const common = tx.common
+  if (!common) throw new Error('Transaction object missing Common instance')
+
+  const txDataZero = common.param('gasPrices', 'txDataZero')
+  const txDataNonZero = common.param('gasPrices', 'txDataNonZero')
+  const txFee = common.param('gasPrices', 'tx')
+  const txCreationFee = common.param('gasPrices', 'txCreation')
+
+  let fee = txFee
+
+  for (let i = 0; i < tx.data.length; i++) {
+    fee += tx.data[i] === 0 ? txDataZero : txDataNonZero
+  }
+
+  const isContractCreation = !tx.to || (tx.to.bytes?.length === 0)
+  if (isContractCreation) {
+    fee += txCreationFee
+  }
+
+  return fee
 }
 
 export class Transactions {
@@ -205,7 +228,7 @@ export class Transactions {
       if (result.execResult.gasRefund) {
         gasUsed += Number(toNumber(result.execResult.gasRefund))
       }
-      gasUsed = gasUsed + Number(toNumber(value.tx.getBaseFee()))
+      gasUsed = gasUsed + Number(getBaseFee(value.tx))
       cb(null, Math.ceil(gasUsed + (15 * gasUsed) / 100))
     })
   }
@@ -290,7 +313,7 @@ export class Transactions {
   eth_getTransactionCount (payload, cb) {
     const address = payload.params[0]
 
-    this.vmContext.vm().stateManager.getAccount(Address.fromString(address)).then((account) => {
+    this.vmContext.vm().stateManager.getAccount(createAddressFromString(address)).then((account) => {
       const nonce = toBigInt(account.nonce).toString(10)
       cb(null, nonce)
     }).catch((error) => {

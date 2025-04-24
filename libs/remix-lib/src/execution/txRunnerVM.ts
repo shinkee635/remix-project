@@ -1,10 +1,10 @@
 'use strict'
 import { RunBlockResult, RunTxResult } from '@ethereumjs/vm'
 import { ConsensusType } from '@ethereumjs/common'
-import { LegacyTransaction, FeeMarketEIP1559Transaction } from '@ethereumjs/tx'
-import { Block } from '@ethereumjs/block'
-import { bytesToHex, Address, hexToBytes } from '@ethereumjs/util'
-import { EVM } from '@ethereumjs/evm'
+import { LegacyTx } from '@ethereumjs/tx'
+import {  createTx,  createTxFromRLP} from '@ethereumjs/tx'
+import { Block, createBlock, createBlockFromRLP } from '@ethereumjs/block'
+import { bytesToHex, Address, hexToBytes, createAddressFromString  } from '@ethereumjs/util'
 import type { Account, AddressLike, BigIntLike } from '@ethereumjs/util'
 import { EventManager } from '../eventManager'
 import { LogsManager } from './logsManager'
@@ -14,7 +14,7 @@ export type VMexecutionResult = {
   result: RunTxResult,
   transactionHash: string
   block: Block,
-  tx: LegacyTransaction
+  tx: LegacyTx
 }
 
 export type VMExecutionCallBack = (error: string | Error, result?: VMexecutionResult) => void
@@ -52,7 +52,7 @@ export class TxRunnerVM {
 
     const vm = this.getVMObject().vm
     if (Array.isArray(blocks) && (blocks || []).length > 0) {
-      const lastBlock = Block.fromRLPSerializedBlock(blocks[blocks.length - 1], { common: this.commonContext })
+      const lastBlock = createBlockFromRLP(blocks[blocks.length - 1], { common: this.commonContext })
 
       this.blockParentHash = lastBlock.hash()
       this.blocks = blocks
@@ -84,11 +84,7 @@ export class TxRunnerVM {
       const EIP1559 = this.commonContext.hardfork() !== 'berlin' // berlin is the only pre eip1559 fork that we handle.
       let tx
       if (signed) {
-        if (!EIP1559) {
-          tx = LegacyTransaction.fromSerializedTx(hexToBytes(data), { common: this.commonContext })
-        } else {
-          tx = FeeMarketEIP1559Transaction.fromSerializedTx(hexToBytes(data), { common: this.commonContext })
-        }
+        tx = createTxFromRLP(hexToBytes(data), { common: this.commonContext })
       }
       else {
         if (!from && useCall && Object.keys(this.vmaccounts).length) {
@@ -100,46 +96,63 @@ export class TxRunnerVM {
           return callback('Invalid account selected')
         }
 
-        const res = await this.getVMObject().stateManager.getAccount(Address.fromString(from))
+        const res = await this.getVMObject().stateManager.getAccount(createAddressFromString(from))
         if (!EIP1559) {
-          tx = LegacyTransaction.fromTxData({
+          tx = createTx({
             nonce: useCall ? this.nextNonceForCall : res.nonce,
             gasPrice: '0x1',
             gasLimit: gasLimit,
             to: (to as AddressLike),
             value: (value as BigIntLike),
-            data: hexToBytes(data)
+            data: hexToBytes(data),
+            type: 0
           }, { common: this.commonContext }).sign(account.privateKey)
         } else {
-          tx = FeeMarketEIP1559Transaction.fromTxData({
+          tx = createTx({
             nonce: useCall ? this.nextNonceForCall : res.nonce,
             maxPriorityFeePerGas: '0x01',
             maxFeePerGas: '0x7',
             gasLimit: gasLimit,
             to: (to as AddressLike),
             value: (value as BigIntLike),
-            data: hexToBytes(data)
+            data: hexToBytes(data),
+            type: 2
           }).sign(account.privateKey)
         }
       }
 
       if (useCall) this.nextNonceForCall++
 
-      const coinbases = ['0x0e9281e9c6a0808672eaba6bd1220e144c9bb07a123456789012345678901234', '0x8945a1288dc78a6d8952a92c77aee6730b414778123456789012345678901234', '0x94d76e24f818426ae84aa404140e8d5f60e10e7e123456789012345678901234']
+      const coinbases = ['0x0000000000000000000000000e9281e9c6a0808672eaba6bd1220e144c9bb07a', '0x0000000000000000000000008945a1288dc78a6d8952a92c77aee6730b414778', '0x00000000000000000000000094d76e24f818426ae84aa404140e8d5f60e10e7e']
       const difficulties = [69762765929000, 70762765929000, 71762765929000]
       const difficulty = this.commonContext.consensusType() === ConsensusType.ProofOfStake ? 0 : difficulties[this.blocks.length % difficulties.length]
-      const block = Block.fromBlockData({
+      // const block = Block.fromBlockData({
+      //   header: {
+      //     timestamp: new Date().getTime() / 1000 | 0,
+      //     number: this.blocks.length,
+      //     coinbase: coinbases[this.blocks.length % coinbases.length],
+      //     difficulty,
+      //     gasLimit,
+      //     baseFeePerGas: EIP1559 ? '0x1' : undefined,
+      //     parentHash: this.blockParentHash
+      //   },
+      //   transactions: [tx]
+      // }, { common: this.commonContext })
+
+      const block = createBlock({
         header: {
-          timestamp: new Date().getTime() / 1000 | 0,
-          number: this.blocks.length,
-          coinbase: coinbases[this.blocks.length % coinbases.length],
-          difficulty,
-          gasLimit,
-          baseFeePerGas: EIP1559 ? '0x1' : undefined,
-          parentHash: this.blockParentHash
+          timestamp: BigInt(Math.floor(Date.now() / 1000)),
+          number: BigInt(this.blocks.length),
+          coinbase: createAddressFromString(coinbases[this.blocks.length % coinbases.length]),
+          difficulty: BigInt(difficulty),
+          gasLimit: BigInt(gasLimit),
+          baseFeePerGas: EIP1559 ? BigInt(1) : undefined,
+          parentHash: hexToBytes(this.blockParentHash)
         },
         transactions: [tx]
-      }, { common: this.commonContext })
+      }, {
+        common: this.commonContext
+      })
 
       // standaloneTx represents a gas estimation call
       if (this.standaloneTx || useCall) {

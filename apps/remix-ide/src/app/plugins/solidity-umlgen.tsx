@@ -78,7 +78,7 @@ export class SolidityUmlGen extends ViewPlugin implements ISolidityUmlGen {
           result = await this.flattenContract(source, file, data, JSON.parse(input))
         }
         const ast = result.length > 1 ? parser.parse(result) : parser.parse(source.sources[file].content)
-        this.umlClasses = convertAST2UmlClasses(ast, this.currentFile)
+        this.umlClasses = convertAST2UmlClasses(ast, this.currentFile, [])
         let umlDot = ''
         this.activeTheme = await this.call('theme', 'currentTheme')
         umlDot = convertUmlClasses2Dot(this.umlClasses, false, {

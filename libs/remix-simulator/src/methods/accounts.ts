@@ -1,5 +1,5 @@
 import { signTypedData, SignTypedDataVersion, TypedMessage, MessageTypes } from '@metamask/eth-sig-util'
-import { privateToAddress, toChecksumAddress, isValidPrivate, Address, toBytes, bytesToHex, Account } from '@ethereumjs/util'
+import { privateToAddress, toChecksumAddress, isValidPrivate, Address, createAddressFromString, toBytes, addHexPrefix, bytesToHex, Account } from '@ethereumjs/util'
 import { privateKeyToAccount } from 'web3-eth-accounts'
 import { toBigInt } from 'web3-utils'
 import * as crypto from 'crypto'
@@ -44,20 +44,20 @@ export class Web3Accounts {
 
   async _addAccount (privateKey, balance) {
     try {
-      if (typeof privateKey === 'string') privateKey = toBytes('0x' + privateKey)
+      if (typeof privateKey === 'string') privateKey = toBytes(addHexPrefix(privateKey))
       const address: Uint8Array = privateToAddress(privateKey)
       const addressStr = toChecksumAddress(bytesToHex(address))
       this.accounts[addressStr] = { privateKey, nonce: 0 }
       this.accountsKeys[addressStr] = bytesToHex(privateKey)
 
       const stateManager = this.vmContext.vm().stateManager
-      const account = await stateManager.getAccount(Address.fromString(addressStr))
+      const account = await stateManager.getAccount(createAddressFromString(addressStr))
       if (!account) {
         const account = new Account(BigInt(0), toBigInt(balance || '0xf00000000000000001'))
-        await stateManager.putAccount(Address.fromString(addressStr), account)
+        await stateManager.putAccount(createAddressFromString(addressStr), account)
       } else {
         account.balance = toBigInt(balance || '0xf00000000000000001')
-        await stateManager.putAccount(Address.fromString(addressStr), account)
+        await stateManager.putAccount(createAddressFromString(addressStr), account)
       }
     } catch (e) {
       console.error(e)
@@ -96,7 +96,7 @@ export class Web3Accounts {
 
   eth_getBalance (payload, cb) {
     const address = payload.params[0]
-    this.vmContext.vm().stateManager.getAccount(Address.fromString(address)).then((account) => {
+    this.vmContext.vm().stateManager.getAccount(createAddressFromString(address)).then((account) => {
       cb(null, toBigInt(account.balance).toString(10))
     }).catch((error) => {
       cb(error)

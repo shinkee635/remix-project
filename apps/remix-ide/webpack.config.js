@@ -8,6 +8,8 @@ const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const path = require('path')
 
+const stripNodeProtocol = (id) => id.startsWith('node:') ? id.replace(/^node:/, '') : id;
+
 const versionData = {
   version: version,
   timestamp: Date.now(),
@@ -70,7 +72,8 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
     readline: false,
     child_process: false,
     buffer: require.resolve('buffer/'),
-    vm: require.resolve('vm-browserify')
+    vm: require.resolve('vm-browserify'),
+    async_hooks: false // silence the warning for missing async_hooks
   }
 
   // add externals
@@ -95,6 +98,17 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
 
   config.resolve.alias = {
     ...config.resolve.alias,
+    'node:fs': 'fs',
+    'node:path': 'path-browserify',
+    'node:zlib': 'browserify-zlib',
+    'node:http': 'stream-http',
+    'node:net': 'net',
+    'node:events': 'events',
+    'node:stream': 'stream-browserify',
+    'node:url': 'url',
+    'node:buffer': 'buffer',
+    'node:util': 'util',
+    'node:crypto': 'crypto-browserify'
     // 'rust-verkle-wasm$': path.resolve(__dirname, '../../node_modules/rust-verkle-wasm/web/run_verkle_wasm.js')
   }
 
@@ -126,6 +140,9 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
       Buffer: ['buffer', 'Buffer'],
       url: ['url', 'URL'],
       process: 'process/browser'
+    }),
+    new webpack.NormalModuleReplacementPlugin(/^node:.+$/, (resource) => {
+      resource.request = stripNodeProtocol(resource.request)
     })
   )
 
