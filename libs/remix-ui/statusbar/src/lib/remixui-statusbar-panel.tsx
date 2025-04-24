@@ -10,6 +10,7 @@ import { StatusBar } from 'apps/remix-ide/src/app/components/status-bar'
 import { StatusBarContextProvider } from '../contexts/statusbarcontext'
 import DidYouKnow from './components/didYouKnow'
 import { appPlatformTypes, platformContext } from '@remix-ui/app'
+import localScamAlerts from '../json/notification.json'
 
 export interface RemixUIStatusBarProps {
   statusBarPlugin: StatusBar
@@ -50,9 +51,7 @@ export function RemixUIStatusBar({ statusBarPlugin }: RemixUIStatusBarProps) {
     const abortController = new AbortController()
     const signal = abortController.signal
     async function getScamAlerts() {
-      const response = await axios.get('https://raw.githubusercontent.com/remix-project-org/remix-dynamics/main/ide/scam-alerts.json', { signal })
-      if (signal.aborted) return
-      setScamAlerts(response.data.alerts)
+      setScamAlerts(localScamAlerts.alerts)
     }
     getScamAlerts()
     return () => {
