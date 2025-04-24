@@ -74,7 +74,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: shinkee635/web3.js
-          ref: v4.3address32
+          ref: new32
           path: web3.js
 
       - name: Build web3.js
@@ -101,7 +101,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: shinkee635/ethers.js
-          ref: address32
+          ref: new32
           path: ethers.js
 
       - name: Build ethers.js
