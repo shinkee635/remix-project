@@ -31,7 +31,7 @@
     "dmg": {
         "writeUpdateInfo": true,
         "sign": false,
-        "volumeName": "Remix-${arch}"
+        "title": "Remix-${arch}"
     },
     "nsis": {
         "createDesktopShortcut": "always",
